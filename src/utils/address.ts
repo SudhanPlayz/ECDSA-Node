@@ -1,5 +1,5 @@
-const { keccak256 } = require("ethereum-cryptography/keccak");
-const { toHex } = require("ethereum-cryptography/utils");
+import { keccak256 } from "ethereum-cryptography/keccak"
+import { toHex } from "ethereum-cryptography/utils";
 
 export const getAddress = (publicKey: Uint8Array) => {
     publicKey = publicKey.slice(1)

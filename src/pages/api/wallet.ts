@@ -8,8 +8,8 @@ export default async function handler(
 ) {
     const { address } = req.query;
 
-    if (!address) return res.status(400).json({ message: 'Address is required' });
-    if (!isAddress(address as string)) return res.status(400).json({ message: 'Invalid address' });
+    if (!address) return res.status(400).json({ error: 'Address is required' });
+    if (!isAddress(address as string)) return res.status(400).json({ error: 'Invalid address' });
 
     const wallet = await db.address.findUnique({
         where: {
@@ -17,9 +17,7 @@ export default async function handler(
         }
     });
 
-    if (!wallet) {
-        return res.status(404).json({ message: 'Wallet not found' });
-    }
+    if (!wallet) return res.status(404).json({ error: 'Wallet not found' });
 
     return res.status(200).json(wallet);
 }

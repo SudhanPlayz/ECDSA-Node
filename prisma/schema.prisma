@@ -14,22 +14,19 @@ model Address {
   address          String        @id @map("_id")
   balance          Float
   publicKey        String
-  transactionsFrom Transaction[] @relation("from")
-  transactionsTo   Transaction[] @relation("to")
 }
 
 model Transaction {
-  id          String   @id @map("_id")
-  from        Address  @relation("from", fields: [fromAddress], references: [address])
-  fromAddress String
-  to          Address  @relation("to", fields: [toAddress], references: [address])
-  toAddress   String
+  id          String   @id @default(uuid()) @map("_id")
+  from        String
+  to          String
   amount      Float
+  hash        String
   timestamp   DateTime @default(now())
 }
 
 model Ratelimit {
-  ip        String   @id @map("_id")
+  ip        String   @id @default(uuid()) @map("_id")
   address   String
   timestamp DateTime @default(now())
 }
