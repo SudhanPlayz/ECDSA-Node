@@ -1,4 +1,5 @@
 import { db } from '@/server/db';
+import { isAddress } from '@/utils/address';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
@@ -7,9 +8,8 @@ export default async function handler(
 ) {
     const { address } = req.query;
 
-    if (!address) {
-        return res.status(400).json({ message: 'Address is required' });
-    }
+    if (!address) return res.status(400).json({ message: 'Address is required' });
+    if (!isAddress(address as string)) return res.status(400).json({ message: 'Invalid address' });
 
     const wallet = await db.address.findUnique({
         where: {

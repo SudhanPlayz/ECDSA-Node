@@ -1,7 +1,7 @@
 import { db } from '@/server/db';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { secp256k1 } from "ethereum-cryptography/secp256k1"
-import getAddress from '@/utils/getAddress';
+import { getAddress } from '@/utils/address';
 
 export default async function handler(
     req: NextApiRequest,
@@ -14,7 +14,7 @@ export default async function handler(
     const wallet = await db.address.create({
         data: {
             address,
-            publicKey: Buffer.from(publicKey),
+            publicKey: Buffer.from(publicKey).toString('hex'),
             balance: 0
         }
     });

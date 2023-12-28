@@ -13,7 +13,7 @@ datasource db {
 model Address {
   address          String        @id @map("_id")
   balance          Float
-  publicKey        Bytes
+  publicKey        String
   transactionsFrom Transaction[] @relation("from")
   transactionsTo   Transaction[] @relation("to")
 }
@@ -26,4 +26,10 @@ model Transaction {
   toAddress   String
   amount      Float
   timestamp   DateTime @default(now())
+}
+
+model Ratelimit {
+  ip        String   @id @map("_id")
+  address   String
+  timestamp DateTime @default(now())
 }
