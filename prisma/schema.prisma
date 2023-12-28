@@ -13,7 +13,7 @@ datasource db {
 model Address {
   address          String        @id @map("_id")
   balance          Float
-  publicKey        String
+  publicKey        Bytes
   transactionsFrom Transaction[] @relation("from")
   transactionsTo   Transaction[] @relation("to")
 }
