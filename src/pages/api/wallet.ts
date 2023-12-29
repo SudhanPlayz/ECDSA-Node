@@ -29,7 +29,10 @@ export default async function handler(
                     to: address as string,
                 }
             ]
-        }
+        },
+        orderBy: {
+            timestamp: 'desc',
+        },
     });
 
     return res.status(200).json({
