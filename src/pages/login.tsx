@@ -2,12 +2,15 @@ import Navbar from "components/Navbar";
 import { Inter } from "next/font/google";
 import Footer from "components/Footer";
 import { withSwal } from 'react-sweetalert2';
+import { useRouter } from "next/router";
 
 const font = Inter({
     subsets: ["latin"],
 })
 
 export default withSwal(({ swal }: any) => {
+    const router = useRouter()
+
     const importPrivateKey = async () => {
         const { value: json } = await swal.fire({
             title: "Import Private Key",
@@ -42,11 +45,11 @@ export default withSwal(({ swal }: any) => {
                 title: "Private Key Imported",
                 text: "Your private key has been imported. You can now login to your account.",
                 icon: "success",
-                confirmButtonText: "Login",
+                
                 showCancelButton: true,
                 preConfirm: () => {
                     localStorage.setItem("privateKey", json.privateKey)
-                    window.location.href = "/wallet"
+                    router.push("/wallet")
                 }
             })
         }
