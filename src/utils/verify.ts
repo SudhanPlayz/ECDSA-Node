@@ -5,6 +5,7 @@ import { Hex } from "@noble/curves/abstract/utils"
 import { toHex } from "ethereum-cryptography/utils";
 
 export default async (from: any, to: any, amount: number, signature: Hex | { r: bigint; s: bigint }) => {
+    if(from === to)return { error: 'From address can't be same as to address' };
     let fromWallet = await db.address.findUnique({
         where: {
             address: from
