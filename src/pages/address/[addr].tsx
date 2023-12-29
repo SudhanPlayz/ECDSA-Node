@@ -58,7 +58,7 @@ export default function Address() {
                                                 label: 'ID',
                                                 resize: true,
                                                 renderCell: (node: Transaction) => (
-                                                    <Link href={`/transaction/${node.id}`} className="text-blue-500 hover:text-blue-700 hover:underline">
+                                                    <Link href={`/tx/${node.id}`} className="text-blue-500 hover:text-blue-700 hover:underline">
                                                         {node.id}
                                                     </Link>
                                                 )
@@ -103,7 +103,7 @@ export default function Address() {
                             </div>
                         </div>
                     ) : (
-                        <p className="text-white text-2xl">Loading...</p>
+                        <p className="text-white text-4xl">Loading...</p>
                     )
                 }
             </div>

@@ -1,5 +1,4 @@
 import { db } from '@/server/db';
-import { isAddress } from '@/utils/address';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
