@@ -14,7 +14,7 @@ export default function Navbar() {
                 {address && <Link href="/wallet" className="text-gray-400 text-xl m-5 hover:text-blue-500 hover:underline">Wallet</Link>}
             </div>
             {address ?
-                <div className="text-white font-bold text-2xl">{address}</div>
+                <div className="text-white font-bold text-md">{address}</div>
                 :
                 <Link href="/login" className="text-white font-bold text-2xl">Login</Link>
             }

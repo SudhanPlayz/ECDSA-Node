@@ -1,3 +1,4 @@
+'use client'
 import Navbar from "components/Navbar";
 import { Inter } from "next/font/google";
 import { useState } from "react";
