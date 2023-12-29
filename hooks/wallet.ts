@@ -10,28 +10,29 @@ function useWallet() {
     const [address, setAddress] = useState<string | null>(null)
     const [balance, setBalance] = useState<number>(0)
 
-    useEffect(() => {
+    const refresh = async () => {
         const pk = window.localStorage.getItem("privateKey")
         if (pk) {
             let isValid = getPublicKey(pk)
             if (isValid) {
                 setPrivateKey(Buffer.from(pk, "hex"))
-                setPublicKey(secp256k1.getPublicKey(Buffer.from(pk, "hex")))
-                setAddress(getAddress(Buffer.from(pk, "hex")))
+                setPublicKey(secp256k1.getPublicKey(pk))
+                setAddress(getAddress(secp256k1.getPublicKey(pk)))
 
-                fetch("/api/wallet?address=" + getAddress(Buffer.from(pk, "hex"))).then(x => x.json()).then(x => {
-                    console.log(x)
+                fetch("/api/wallet?address=" + getAddress(secp256k1.getPublicKey(pk))).then(x => x.json()).then(x => {
                     setBalance(x.balance)
                 })
             } else {
                 window.localStorage.removeItem("privateKey")
             }
         }
+    }
 
-        console.log(pk, privateKey, Buffer.from(privateKey!).toString("hex"), publicKey, Buffer.from(publicKey!).toString("hex"), address)
+    useEffect(() => {
+        refresh()
     }, [])
 
-    return { privateKey, publicKey, address }
+    return { privateKey, publicKey, address, balance, refresh }
 }
 
 export default useWallet

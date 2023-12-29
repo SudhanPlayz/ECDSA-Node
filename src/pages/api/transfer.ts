@@ -12,6 +12,7 @@ export default async function handler(
         amount, //amount in number
         signature //message hash in hex
     } = req.body;
+    console.log(req.body)
 
     if (!from) return res.status(400).send({ error: 'No from address specified' })
     if (!to) return res.status(400).send({ error: 'No to address specified' })
