@@ -8,7 +8,15 @@ export default async function handler(
 ) {
     const { tx } = req.query;
 
-    if (!tx) return res.status(400).send({ error: 'No address specified' });
+    if (!tx) {
+        const TX = await db.transaction.findMany({
+            take: 10,
+            orderBy: {
+                timestamp: 'desc'
+            }
+        })
+        return res.status(200).send(TX)
+    }
     
     const TX = await db.transaction.findUnique({
         where: {
