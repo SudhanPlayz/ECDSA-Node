@@ -16,7 +16,7 @@ export default withSwal(({ swal }: any) => {
         <main className={"flex flex-col bg-slate-950 min-h-screen w-screen " + font.className}>
             <Navbar />
             <div className="flex flex-col grow justify-evenly items-center">
-                <div className="flex flex-col">
+                <div className="flex flex-col w-full justify-center items-center">
                     <h1 className="text-white text-4xl m-3">Faucet</h1>
                     <p className="text-white w-3/4 text-center">
                         This faucet is used to send you money to a specified address. You can use this to test out the functionality of the ECDSA Node.
