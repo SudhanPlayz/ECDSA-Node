@@ -1,27 +1,47 @@
-# Create T3 App
+# ECDSA Node
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A secure and streamlined solution for centralized transfers using Elliptic Curve Digital Signatures. Visit the live project at [https://ecdsa-sudhan.vercel.app/](https://ecdsa-sudhan.vercel.app/).
 
-## What's next? How do I make an app with this?
+## Technologies Used
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- **NextJS**: A React framework for building server-rendered applications.
+- **TailwindCSS**: A utility-first CSS framework for building modern designs.
+- **Prisma**: A modern database toolkit for Node.js and TypeScript.
+- **MongoDB**: A NoSQL database for scalable and flexible data storage.
+- **ethereum-cryptography**: Enhancing security through Ethereum-compatible cryptographic methods.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Getting Started
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
+1. Clone the repository:
 
-## Learn More
+   ```bash
+   git clone https://github.com/SudhanPlayz/ECDSA-Node.git
+   cd ECDSA-Node
+   ```
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+2. Install dependencies:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+   ```bash
+   npm install
+   ```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+3. Set up your environment variables:
 
-## How do I deploy this?
+   Create a `.env` file and configure it with your settings.
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) to view the project in your browser.
+
+## Features
+
+- **Centralized Transfers**: Effortlessly facilitate transfers between different addresses.
+- **Elliptic Curve Digital Signatures**: Enhance security with cryptographic signatures for authorized transactions.
+
+## Contributions
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
