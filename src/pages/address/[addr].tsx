@@ -38,12 +38,12 @@ export default function Address() {
                 {
                     data ? (
                         <div className="flex flex-col w-screen h-auto items-center justify-center">
-                            <div className="flex flex-row w-full h-auto justify-center">
-                                <div className="flex flex-col w-2/5 h-auto bg-slate-800 rounded-lg p-2 m-2">
+                            <div className="flex flex-col lg:flex-row w-full h-auto justify-center">
+                                <div className="flex flex-col w-full lg:w-2/5 h-auto bg-slate-800 rounded-lg p-2 m-2">
                                     <p className="text-white text-xl">Address</p>
                                     <p className="text-white text-2xl">{data.address}</p>
                                 </div>
-                                <div className="flex flex-col w-2/5 h-auto bg-slate-800 rounded-lg p-2 m-2">
+                                <div className="flex flex-col w-full lg:w-2/5 h-auto bg-slate-800 rounded-lg p-2 m-2">
                                     <p className="text-white text-xl">Balance</p>
                                     <p className="text-white text-2xl">{data.balance}</p>
                                 </div>
