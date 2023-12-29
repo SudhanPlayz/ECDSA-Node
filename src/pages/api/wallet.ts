@@ -19,5 +19,21 @@ export default async function handler(
 
     if (!wallet) return res.status(404).json({ error: 'Wallet not found' });
 
-    return res.status(200).json(wallet);
+    const transactions = await db.transaction.findMany({
+        where: {
+            OR: [
+                {
+                    from: address as string,
+                },
+                {
+                    to: address as string,
+                }
+            ]
+        }
+    });
+
+    return res.status(200).json({
+        ...wallet,
+        transactions,
+    });
 }
