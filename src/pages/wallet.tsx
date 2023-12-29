@@ -76,7 +76,7 @@ export default withSwal(({ swal }: any) => {
             confirmButtonText: "View transaction",
         }).then((result: any) => {
             if (result.isConfirmed) {
-                router.push(`/tx/${data.id}`);
+                router.push(`/tx/${data.tx.id}`);
             }
         });
 

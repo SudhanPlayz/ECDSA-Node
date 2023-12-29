@@ -52,7 +52,7 @@ export default withSwal(({ swal }: any) => {
                                             confirmButtonText: "View Transaction",
                                             showCancelButton: true,
                                             preConfirm: () => {
-                                                window.location.href = `/tx/${data.id}`
+                                                window.location.href = `/tx/${data.tx.id}`
                                             }
                                         })
                                     }
