@@ -8,13 +8,13 @@ const font = Inter({
 })
 
 export default withSwal(({ swal }: any) => {
-    const importPrivateKey = () => {
-        const { value: json } = swal.fire({
+    const importPrivateKey = async () => {
+        const { value: json } = await swal.fire({
             title: "Import Private Key",
             input: "file",
             inputPlaceholder: "Select your private key",
             showCancelButton: true,
-            inputValidator: (value: any) => {
+            preConfirm: (value: any) => {
                 return new Promise((resolve, reject) => {
                     if (value) {
                         let reader = new FileReader()
@@ -23,6 +23,7 @@ export default withSwal(({ swal }: any) => {
                         reader.onload = () => {
                             try {
                                 let json = JSON.parse(reader.result as string)
+                                console.log(json)
                                 if (!json.privateKey) return reject("Invalid private key")
                                 resolve(json)
                             } catch (e) {
@@ -36,23 +37,51 @@ export default withSwal(({ swal }: any) => {
             }
         })
 
-        console.log(json)
+        if (json) {
+            swal.fire({
+                title: "Private Key Imported",
+                text: "Your private key has been imported. You can now login to your account.",
+                icon: "success",
+                confirmButtonText: "Login",
+                showCancelButton: true,
+                preConfirm: () => {
+                    localStorage.setItem("privateKey", json.privateKey)
+                    window.location.href = "/wallet"
+                }
+            })
+        }
     }
 
-    const createAccount = () => {
-        swal.fire({
-            title: "Create Account",
-            html: `
-                <div className="flex flex-col">
-                    <input className="bg-slate-900 text-white rounded-md p-2 py-3 m-2 outline-none" placeholder="Enter username" />
-                    <input className="bg-slate-900 text-white rounded-md p-2 py-3 m-2 outline-none" placeholder="Enter password" />
-                    <button className="bg-blue-500 text-white rounded-md px-5 py-2 m-2 hover:bg-blue-700 text-lg">Create</button>
-                </div>
-            `,
-            showConfirmButton: false
-        }).then(() => {
-            console.log("Created account")
+    const createAccount = async () => {
+        const { value: json } = await swal.fire({
+            title: "Create Wallet",
+            text: "Are you sure you want to create a new wallet? If you already have one, I recommend importing it instead.",
+            showCancelButton: true,
+            confirmButtonText: "Create",
+            showLoaderOnConfirm: false,
+            preConfirm: async () => {
+                return await fetch("/api/generate").then((res) => res.json())
+            }
         })
+
+        if (json) {
+            swal.fire({
+                title: "Wallet Created",
+                text: "Your wallet has been created. Please save your private key somewhere safe. If you lose your private key, you will lose access to your account.",
+                icon: "success",
+                confirmButtonText: "Download Key",
+                showCancelButton: true,
+                preConfirm: () => {
+                    var element = document.createElement('a');
+                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(json)));
+                    element.setAttribute('download', "private-key.json");
+                    element.style.display = 'none';
+                    document.body.appendChild(element);
+                    element.click();
+                    document.body.removeChild(element);
+                }
+            })
+        }
     }
 
     return (
