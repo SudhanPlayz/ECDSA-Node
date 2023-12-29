@@ -39,8 +39,13 @@ A secure and streamlined solution for centralized transfers using Elliptic Curve
 
 ## Features
 
-- **Centralized Transfers**: Effortlessly facilitate transfers between different addresses.
-- **Elliptic Curve Digital Signatures**: Enhance security with cryptographic signatures for authorized transactions.
+- **Centralized Transfers**: Facilitate transfers between different addresses securely.
+- **Import a Key**: Easily import existing cryptographic keys for seamless integration.
+- **Create a New Key**: Generate a new cryptographic key for enhanced security.
+- **Send Funds to Any Address**: Initiate secure transactions to any specified address.
+- **View Transactions**: Explore a detailed history of transactions for transparency.
+- **View Address Balance**: Check the balance of any address for up-to-date financial insights.
+- **Faucet Integration**: Obtain funds from the [faucet](https://ecdsa-sudhan.vercel.app/faucet) with a 5 balance grant.
 
 ## Contributions
 
