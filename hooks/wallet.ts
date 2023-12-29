@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from "react";
 import { getPublicKey } from "@/utils/wallet";
 import { getAddress } from "@/utils/address";
@@ -20,7 +21,7 @@ function useWallet() {
                 window.localStorage.removeItem("privateKey")
             }
         }
-    }, [window.localStorage.getItem("privateKey")])
+    }, [])
 
     return { privateKey, publicKey, address }
 }

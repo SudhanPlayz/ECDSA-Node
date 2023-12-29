@@ -1,3 +1,4 @@
+'use client'
 import useWallet from "hooks/wallet";
 import Link from "next/link";
 
